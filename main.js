@@ -1,4 +1,3 @@
-
 $("button").on("click", function () {
     let address = $("#addr-input").val()
     let minPrice = $("#min-p-input").val()
@@ -14,7 +13,10 @@ $("button").on("click", function () {
 const renderApts = function (apartments) {
     $("#results").empty()
     console.log(apartments) //array of apartments to render
-    //Your code goes here.
+    const source = $("#listing-template").html()
+    const template = Handlebars.compile(source)
+    const listings = {apartments}
+    $("#results").append(template(listings))
 }
 
 renderApts(apartments) //renders apartments when page loads
